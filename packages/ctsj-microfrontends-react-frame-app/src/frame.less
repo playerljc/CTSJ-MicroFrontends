@@ -1,0 +1,42 @@
+.Wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  > .Fixed {
+    display: flex;
+    flex-shrink: 0;
+
+    > .Logo {
+      flex-shrink: 0;
+    }
+
+    > .Right {
+      flex-shrink: 0;
+    }
+
+    > .Menu {
+      display: flex;
+      flex-grow: 1;
+      min-width: 0;
+
+      > ul {
+        display: flex;
+        list-style: none;
+
+        > li {
+          margin-right: 15px;
+          padding: 5px 10px;
+          text-align: center;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+
+  > .Auto {
+    flex-grow: 1;
+    min-height: 0;
+  }
+}

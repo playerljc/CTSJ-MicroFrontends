@@ -1,0 +1,18 @@
+.Wrap {
+  display: flex;
+
+  > .Fixed {
+    flex-shrink: 0;
+
+    > .Menu {
+      > ul {
+        list-style: none;
+      }
+    }
+  }
+
+  > .Auto {
+    flex-grow: 1;
+    min-width: 0;
+  }
+}
