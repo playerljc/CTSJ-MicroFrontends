@@ -1,5 +1,6 @@
 import React from 'react';
 import type { IRegisterConfig, IProps } from './types';
+import Skeleton from 'react-loading-skeleton';
 
 import Context from './context';
 
@@ -183,7 +184,7 @@ export function createComponent(
 
             return (
               <Context.Provider value={window[name]?.getChild()}>
-                {isReady && window[name] ? children : null}
+                {isReady && window[name] ? children : <Skeleton />}
               </Context.Provider>
             );
           }}

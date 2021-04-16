@@ -7,6 +7,9 @@
   > .Fixed {
     display: flex;
     flex-shrink: 0;
+    height: 80px;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
 
     > .Logo {
       flex-shrink: 0;
@@ -29,7 +32,12 @@
           margin-right: 15px;
           padding: 5px 10px;
           text-align: center;
-          border-radius: 8px;
+          border-radius: 14px;
+          border: 1px solid #ccc;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -38,5 +46,6 @@
   > .Auto {
     flex-grow: 1;
     min-height: 0;
+    padding: 20px;
   }
 }
