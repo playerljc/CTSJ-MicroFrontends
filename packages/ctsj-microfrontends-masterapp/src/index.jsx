@@ -75,6 +75,13 @@ const config = [
             scripts: [`${context}/$department.bundle.js`],
             links: [`${context}/$department.min.css`],
           },
+          {
+            // 统计管理
+            path: '/system/statistics/*',
+            name: '$statistics',
+            scripts: [`${context}/$statistics.bundle.js`],
+            links: [`${context}/$statistics.min.css`],
+          },
         ],
       },
     ],

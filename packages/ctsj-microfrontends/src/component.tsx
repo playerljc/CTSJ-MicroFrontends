@@ -73,11 +73,13 @@ export function createComponent(
 ): React.ReactElement {
   // @ts-ignore
   return class ComponentWrap extends React.Component<IProps, { isReady: boolean }> {
-    el: HTMLElement | null = null;
+    private el: HTMLElement | null = null;
 
-    lock: boolean = false;
+    private lock: boolean = false;
 
     // @ts-ignore
+    private unListen: any;
+
     constructor(props) {
       super(props);
 
@@ -89,6 +91,13 @@ export function createComponent(
     }
 
     componentDidMount() {
+      // 1.接收到props中的history对象
+      const { history } = this.props;
+      // 2. 使用history的listen方法添加自定义监听事件 参数为一个回调函数 即：路由改变之后执行的方法
+      this.unListen = history.listen((location) => {
+        console.log('pathChange', location);
+      });
+
       const { name } = config;
 
       // 如果没有加载远程资源，则加载远程资源
@@ -154,6 +163,8 @@ export function createComponent(
     }
 
     componentWillUnmount() {
+      this.unListen();
+
       const { name } = config;
 
       // @ts-ignore

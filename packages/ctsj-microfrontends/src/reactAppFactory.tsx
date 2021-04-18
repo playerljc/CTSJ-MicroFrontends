@@ -64,9 +64,9 @@ class ReactApp {
 
     // @ts-ignore
     return class extends React.Component<IComponentHOCProps, any> {
-      componentDidMount() {
-        console.log('ComponentHOC componentDidMount', self.ins);
-      }
+      // componentDidMount() {
+      //   console.log('ComponentHOC componentDidMount', self.ins);
+      // }
 
       render() {
         // @ts-ignore
