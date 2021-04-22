@@ -69,3 +69,10 @@ export interface IRouteConfig {
   // routes
   routes?: IRouterConfig;
 }
+
+/**
+ * ILocation
+ */
+export interface ILocation {
+  pathname: string;
+}

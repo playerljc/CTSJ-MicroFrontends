@@ -52,4 +52,10 @@ export interface IRouteConfig {
     redirect?: string;
     routes?: IRouterConfig;
 }
+/**
+ * ILocation
+ */
+export interface ILocation {
+    pathname: string;
+}
 export {};

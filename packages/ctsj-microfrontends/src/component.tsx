@@ -1,11 +1,13 @@
 import React from 'react';
-import type { IRegisterConfig, IProps } from './types';
+import type { IRegisterConfig, IProps, ILocation } from './types';
 import Skeleton from 'react-loading-skeleton';
 
 import Context from './context';
+import { routerChangeEmitter } from './emitter';
+import { ROUTER_CHANGE } from './actions';
 
 /**
- * loadScript
+ * loadScript - 加载script脚本
  * @param script
  * @return Promise
  */
@@ -21,7 +23,7 @@ function loadScript(script: string): Promise<null> {
 }
 
 /**
- * loadLink
+ * loadLink - 加载css文件
  * @param link
  * @return Promise
  */
@@ -39,7 +41,7 @@ function loadLink(link: string): Promise<null> {
 
 // @ts-ignore
 /**
- * loadRemoteResource - 加载远程资源
+ * loadRemoteResource - 加载远程所有的脚本和样式资源
  * @param scripts
  * @param links
  * @return Promise
@@ -71,6 +73,11 @@ export function createComponent(
   config: IRegisterConfig,
   container: HTMLElement,
 ): React.ReactElement {
+  /**
+   * ComponentWrap
+   * @class ComponentWrap
+   * @classdesc ComponentWrap
+   */
   // @ts-ignore
   return class ComponentWrap extends React.Component<IProps, { isReady: boolean }> {
     private el: HTMLElement | null = null;
@@ -80,6 +87,9 @@ export function createComponent(
     // @ts-ignore
     private unListen: any;
 
+    // 之前变化的location
+    private preChangeLocation: null | ILocation = null;
+
     constructor(props) {
       super(props);
 
@@ -87,16 +97,18 @@ export function createComponent(
         isReady: false,
       };
 
+      // 路由发生变化的回调
+      this.onLocationChange = this.onLocationChange.bind(this);
+
       this.refresh = this.refresh.bind(this);
     }
 
     componentDidMount() {
       // 1.接收到props中的history对象
       const { history } = this.props;
+
       // 2. 使用history的listen方法添加自定义监听事件 参数为一个回调函数 即：路由改变之后执行的方法
-      this.unListen = history.listen((location) => {
-        console.log('pathChange', location);
-      });
+      this.unListen = history.listen(this.onLocationChange);
 
       const { name } = config;
 
@@ -179,6 +191,20 @@ export function createComponent(
       this.lock = true;
 
       this.forceUpdate();
+    }
+
+    /**
+     * onLocationChange - 路由改变之后执行的方法
+     * @param location
+     */
+    onLocationChange(location: ILocation) {
+      if (!this.preChangeLocation) {
+        this.preChangeLocation = location;
+        routerChangeEmitter.trigger(ROUTER_CHANGE, location);
+      } else if (this.preChangeLocation.pathname !== location.pathname) {
+        this.preChangeLocation = location;
+        routerChangeEmitter.trigger(ROUTER_CHANGE, location);
+      }
     }
 
     render() {

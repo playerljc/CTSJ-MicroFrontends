@@ -8,17 +8,23 @@ import { browserConfig } from '@ctsj/router';
 // @ts-ignore
 import { createComponent } from './component';
 
-import type { IRegisterConfig, IRouteConfig } from './types';
+import * as Actions from './actions';
+import ReactApp from './reactAppFactory';
+import * as Types from './types';
+import * as Emitter from './emitter';
 
-const router: IRouteConfig[] = [];
+// import type { IRegisterConfig, IRouteConfig } from './types';
+
+// 路由的配置
+const router: Types.IRouteConfig[] = [];
 
 /**
- * loop
+ * loop - 循环构建路由配置
  * @param config
  * @param routes
  * @param el
  */
-function loop(config: IRegisterConfig[], routes: IRouteConfig[], el: HTMLElement) {
+function loop(config: Types.IRegisterConfig[], routes: Types.IRouteConfig[], el: HTMLElement) {
   for (let i = 0; i < config.length; i++) {
     const item = config[i];
 
@@ -28,7 +34,7 @@ function loop(config: IRegisterConfig[], routes: IRouteConfig[], el: HTMLElement
         redirect: item.redirect,
       });
     } else {
-      const children: IRouteConfig[] = [];
+      const children: Types.IRouteConfig[] = [];
 
       loop(item.routes || [], children, el);
 
@@ -43,11 +49,11 @@ function loop(config: IRegisterConfig[], routes: IRouteConfig[], el: HTMLElement
 
 /**
  * register - 路由的配置
- * @param config
+ * @param config - 路由的配置
  * @param el - 渲染的el
  * @return Promise
  */
-export function register(config: IRegisterConfig[], el: HTMLElement): Promise<null> {
+function register(config: Types.IRegisterConfig[], el: HTMLElement): Promise<null> {
   // 需要对ctsj-router的路由配置进行定制
   return new Promise((resolve) => {
     loop(config, router, el);
@@ -57,10 +63,10 @@ export function register(config: IRegisterConfig[], el: HTMLElement): Promise<nu
 }
 
 /**
- * start
+ * start - 开启
  * @param el
  */
-export function start(el: HTMLElement): Promise<null> {
+function start(el: HTMLElement): Promise<null> {
   return new Promise((resolve) => {
     // @ts-ignore
     ReactDOM.render(browserConfig(router), el, () => {
@@ -68,3 +74,5 @@ export function start(el: HTMLElement): Promise<null> {
     });
   });
 }
+
+export default { register, start, Actions, ReactApp, Types, Emitter };

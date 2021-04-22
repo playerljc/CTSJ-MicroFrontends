@@ -1,7 +1,14 @@
 import React from 'react';
 import { Menu } from 'antd';
 
+import CtsjMicroFrontends from 'CtsjMicroFrontends';
+
 import styles from './app.less';
+
+const {
+  Emitter: { routerChangeEmitter },
+  Actions: { ROUTER_CHANGE },
+} = CtsjMicroFrontends;
 
 /**
  * Statistics
@@ -9,6 +16,20 @@ import styles from './app.less';
  * @classdesc Statistics
  */
 class Statistics extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onRouterChange = this.onRouterChange.bind(this);
+  }
+
+  componentDidMount() {
+    routerChangeEmitter.on(ROUTER_CHANGE, this.onRouterChange);
+  }
+
+  onRouterChange(location) {
+    this.props.history.push(location.pathname);
+  }
+
   render() {
     return (
       <div className={styles.Wrap}>

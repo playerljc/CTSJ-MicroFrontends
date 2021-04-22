@@ -1,10 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
 
+import CtsjMicroFrontends from 'CtsjMicroFrontends';
+
 import './index.less';
 
-import { register, start } from '@ctsj/microfrontends';
-
+const { register, start } = CtsjMicroFrontends;
 const context = 'http://localhost:8080/assets';
 
 /**

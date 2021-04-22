@@ -10,6 +10,7 @@ module.exports = {
       react: 'React',
       'react-dom': 'ReactDOM',
       antd: 'antd',
+      CtsjMicroFrontends: 'CtsjMicroFrontends',
     };
 
     webpackConfig.module.rules[1].include.push(/antd.min.css/);

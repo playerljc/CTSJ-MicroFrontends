@@ -1,9 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
 
-import ReactApp from '@ctsj/microfrontends/lib/reactAppFactory';
+import CtsjMicroFrontends from 'CtsjMicroFrontends';
 
 import Department from './department';
+
+const { ReactApp } = CtsjMicroFrontends;
 
 let reactApp;
 
