@@ -1,6 +1,7 @@
 import * as Actions from './actions';
 import ReactApp from './reactAppFactory';
-import type * as Types from './types';
+import VueApp from './vueAppFactory';
+import * as Types from './types';
 import * as Emitter from './emitter';
 /**
  * register - 路由的配置
@@ -8,10 +9,19 @@ import * as Emitter from './emitter';
  * @param el - 渲染的el
  * @return Promise
  */
-export declare function register(config: Types.IRegisterConfig[], el: HTMLElement): Promise<null>;
+declare function register(config: Types.IRegisterConfig[], el: HTMLElement): Promise<null>;
 /**
  * start - 开启
  * @param el
  */
-export declare function start(el: HTMLElement): Promise<null>;
-export { Actions, ReactApp, Types, Emitter };
+declare function start(el: HTMLElement): Promise<null>;
+declare const _default: {
+    register: typeof register;
+    start: typeof start;
+    Actions: typeof Actions;
+    ReactApp: typeof ReactApp;
+    VueApp: typeof VueApp;
+    Types: typeof Types;
+    Emitter: typeof Emitter;
+};
+export default _default;

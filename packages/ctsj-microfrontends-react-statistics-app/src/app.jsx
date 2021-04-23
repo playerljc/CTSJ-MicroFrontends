@@ -26,6 +26,10 @@ class Statistics extends React.Component {
     routerChangeEmitter.on(ROUTER_CHANGE, this.onRouterChange);
   }
 
+  componentWillMount() {
+    routerChangeEmitter.remove(ROUTER_CHANGE, this.onRouterChange);
+  }
+
   onRouterChange(location) {
     this.props.history.push(location.pathname);
   }

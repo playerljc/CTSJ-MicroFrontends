@@ -10,6 +10,7 @@ import { createComponent } from './component';
 
 import * as Actions from './actions';
 import ReactApp from './reactAppFactory';
+import VueApp from './vueAppFactory';
 import * as Types from './types';
 import * as Emitter from './emitter';
 
@@ -75,4 +76,4 @@ function start(el: HTMLElement): Promise<null> {
   });
 }
 
-export default { register, start, Actions, ReactApp, Types, Emitter };
+export default { register, start, Actions, ReactApp, VueApp, Types, Emitter };

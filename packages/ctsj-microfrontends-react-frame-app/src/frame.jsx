@@ -28,21 +28,43 @@ class Frame extends React.Component {
                   this.props.history.push('/user');
                 }}
               >
-                用户管理
+                用户管理(React)
               </li>
               <li
                 onClick={() => {
                   this.props.history.push('/system');
                 }}
               >
-                系统管理
+                系统管理(React)
               </li>
               <li
                 onClick={() => {
                   this.props.history.push('/setting');
                 }}
               >
-                系统设置
+                系统设置(React)
+              </li>
+
+              <li
+                onClick={() => {
+                  this.props.history.push('/user_vue');
+                }}
+              >
+                用户管理(Vue)
+              </li>
+              <li
+                onClick={() => {
+                  this.props.history.push('/system_vue');
+                }}
+              >
+                系统管理(Vue)
+              </li>
+              <li
+                onClick={() => {
+                  this.props.history.push('/setting_vue');
+                }}
+              >
+                系统设置(Vue)
               </li>
             </ul>
           </div>

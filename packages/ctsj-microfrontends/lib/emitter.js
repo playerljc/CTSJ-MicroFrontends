@@ -1,2 +1,2 @@
-"use strict";var __importDefault=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};Object.defineProperty(exports,"__esModule",{value:!0}),exports.dataFlowEmitter=exports.routerChangeEmitter=void 0;var events_1=__importDefault(require("./events")),routerChangeEmitter=new events_1.default;exports.routerChangeEmitter=routerChangeEmitter;var dataFlowEmitter=new events_1.default;exports.dataFlowEmitter=dataFlowEmitter;
+import Events from"./events";var routerChangeEmitter=new Events,dataFlowEmitter=new Events;export{routerChangeEmitter,dataFlowEmitter};
 //# sourceMappingURL=emitter.js.map
