@@ -1,0 +1,45 @@
+{
+  "name": "@ctsj/microfrontends-department-menu-app",
+  "private": true,
+  "version": "1.0.0",
+  "description": "部门管理",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "buildumd": "vue-cli-service build --target lib --inline-vue --name $departmentVue ./src/index.js",
+    "lint": "vue-cli-service lint"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "dependencies": {
+    "vue": "^2.6.11",
+    "ant-design-vue": "^1.7.4",
+    "core-js": "^3.6.5",
+    "@ctsj/microfrontends": "^1.0.0"
+  }
+}

@@ -26,6 +26,58 @@ const config = [
     scripts: [`${context}/$app.bundle.js`],
     links: [`${context}/$app.min.css`],
     routes: [
+      /* ------------------------------Vue------------------------------*/
+      {
+        // 用户管理(Vue)
+        path: '/vue_user',
+        name: '$userVue',
+        scripts: [`${context}/$userVue.umd.min.js`],
+      },
+      {
+        // 系统设置(Vue)
+        path: '/vue_setting',
+        name: '$settingVue',
+        scripts: [`${context}/$settingVue.umd.min.js`],
+      },
+      {
+        // 系统管理(Vue)
+        path: '/vue_system',
+        name: '$systemVue',
+        scripts: [`${context}/$systemVue.umd.min.js`],
+        links: [`${context}/$systemVue.css`],
+        routes: [
+          {
+            path: '/',
+            redirect: '/vue_system/vue_menu',
+          },
+          {
+            // 菜单管理
+            path: '/vue_system/vue_menu',
+            name: '$menuVue',
+            scripts: [`${context}/$menuVue.umd.min.js`],
+          },
+          {
+            // 角色管理
+            path: '/vue_system/vue_role',
+            name: '$roleVue',
+            scripts: [`${context}/$roleVue.umd.min.js`],
+          },
+          {
+            // 部门管理
+            path: '/vue_system/vue_department',
+            name: '$departmentVue',
+            scripts: [`${context}/$departmentVue.umd.min.js`],
+          },
+          {
+            // 统计管理
+            path: '/vue_system/vue_statistics/*',
+            name: '$statisticsVue',
+            scripts: [`${context}/$statisticsVue.umd.min.js`],
+          },
+        ],
+      },
+
+      /* -----------------------------React-----------------------------*/
       {
         path: '/',
         redirect: '/user',
@@ -85,61 +137,6 @@ const config = [
           },
         ],
       },
-
-      /* ------------------------------Vue------------------------------*/
-      {
-        // 用户管理(Vue)
-        path: '/user_vue',
-        name: '$userVue',
-        scripts: [`${context}/$userVue.umd.min.js`],
-      },
-      {
-        // 系统设置(Vue)
-        path: '/setting_vue',
-        name: '$settingVue',
-        scripts: [`${context}/$settingVue.umd.min.js`],
-      },
-      // {
-      //   // 系统管理(Vue)
-      //   path: '/system_vue',
-      //   name: '$systemVue',
-      //   scripts: [`${context}/$systemVue.bundle.js`],
-      //   links: [`${context}/$systemVue.min.css`],
-      //   routes: [
-      //     {
-      //       path: '/',
-      //       redirect: '/system/menu_vue',
-      //     },
-      //     {
-      //       // 菜单管理
-      //       path: '/system/menu_vue',
-      //       name: '$menuVue',
-      //       scripts: [`${context}/$menuVue.bundle.js`],
-      //       links: [`${context}/$menuVue.min.css`],
-      //     },
-      //     {
-      //       // 角色管理
-      //       path: '/system/role_vue',
-      //       name: '$roleVue',
-      //       scripts: [`${context}/$roleVue.bundle.js`],
-      //       links: [`${context}/$roleVue.min.css`],
-      //     },
-      //     {
-      //       // 部门管理
-      //       path: '/system/department_vue',
-      //       name: '$departmentVue',
-      //       scripts: [`${context}/$departmentVue.bundle.js`],
-      //       links: [`${context}/$departmentVue.min.css`],
-      //     },
-      //     {
-      //       // 统计管理
-      //       path: '/system/statistics_vue/*',
-      //       name: '$statisticsVue',
-      //       scripts: [`${context}/$statisticsVue.bundle.js`],
-      //       links: [`${context}/$statisticsVue.min.css`],
-      //     },
-      //   ],
-      // },
     ],
   },
 ];

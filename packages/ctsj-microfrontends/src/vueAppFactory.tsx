@@ -81,25 +81,29 @@ class VueApp {
 
   /**
    * mount - 挂载
+   * @param config - vue的配置对象
    * @return Promise
    */
-  mount(): Promise<null> {
+  mount(config = {}): Promise<null> {
     return new Promise((resolve) => {
       this.ins = new Vue({
+        ...(config || {}),
         render: (createElement) =>
           createElement(this.Component, {
             props: {
-              ...this.props,
+              routerProps: { ...this.props },
               config: this.config,
               refresh: this.refresh,
             },
           }),
+        mounted() {
+          console.log('mounted');
+          resolve();
+        },
       });
 
       // @ts-ignore
       this.ins.$mount(this.mountEl);
-
-      resolve();
     });
   }
 
@@ -111,7 +115,7 @@ class VueApp {
     // @ts-ignore
     return new Promise<null>((resolve) => {
       // @ts-ignore
-      this.in.$forceUpdate();
+      this.ins.$forceUpdate();
       resolve();
     });
   }
