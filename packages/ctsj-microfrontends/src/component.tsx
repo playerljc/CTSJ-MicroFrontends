@@ -64,7 +64,7 @@ function loadRemoteResource({
 }
 
 /**
- * createComponent
+ * createComponent - 创建路由组件
  * @param config
  * @param container
  * @return React.ReactElement
@@ -74,12 +74,12 @@ export function createComponent(
   container: HTMLElement,
 ): React.ReactElement {
   /**
-   * ComponentWrap
-   * @class ComponentWrap
-   * @classdesc ComponentWrap
+   * RouterComponent - 路由组件
+   * @class RouterComponent
+   * @classdesc RouterComponent
    */
   // @ts-ignore
-  return class ComponentWrap extends React.Component<IProps, { isReady: boolean }> {
+  return class RouterComponent extends React.Component<IProps, { isReady: boolean }> {
     private el: HTMLElement | null = null;
 
     private lock: boolean = false;

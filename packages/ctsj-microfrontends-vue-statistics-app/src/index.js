@@ -84,18 +84,11 @@ export default {
     return vueApp.mount({
       router,
       mounted: function () {
-        // console.log('onRouterChangemounted', ROUTER_CHANGE, this, this.onRouterChange);
         routerChangeEmitter.on(ROUTER_CHANGE, onRouterChange);
       },
       destroyed: function () {
         routerChangeEmitter.remove(ROUTER_CHANGE, onRouterChange);
       },
-      // methods: {
-      //   onRouterChange: function (location) {
-      //     console.log('onRouterChange', location, this, this.router);
-      //     this.router.push(location.pathname);
-      //   },
-      // },
     });
   },
   /**

@@ -56,14 +56,15 @@
     ]
   },
   "devDependencies": {
-    "fs-extra": "^9.0.1",
-    "lerna": "^3.22.1",
     "@umijs/fabric": "^2.0.8",
+    "cp-cli": "^2.0.0",
     "eslint": "^6.8.0",
+    "fs-extra": "^9.0.1",
     "husky": "^4.2.5",
+    "lerna": "^3.22.1",
     "lint-staged": "^10.2.0",
     "prettier": "^2.0.5",
-    "stylelint": "^13.8.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "stylelint": "^13.8.0"
   }
 }

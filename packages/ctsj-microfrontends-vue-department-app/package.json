@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "buildumd": "vue-cli-service build --target lib --inline-vue --name $departmentVue ./src/index.js",
+    "postbuildumd": "node ../../scripts/copyassets.js ./umd/$departmentVue.umd.min.js ../ctsj-microfrontends-masterapp/assets/$departmentVue.umd.min.js",
     "lint": "vue-cli-service lint"
   },
   "eslintConfig": {

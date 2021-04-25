@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import type { IRegisterConfig, IProps, IComponentHOCProps } from './types';
 
 /**
- * ReactApp
+ * ReactApp - React组件
  * @class ReactApp
  * @classdesc ReactApp
  */

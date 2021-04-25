@@ -4,7 +4,7 @@ import Vue from 'vue';
 import type { IRegisterConfig, IProps } from './types';
 
 /**
- * VueApp
+ * VueApp - Vue组件
  * @class VueApp
  * @classdesc VueApp
  */
@@ -97,7 +97,6 @@ class VueApp {
             },
           }),
         mounted() {
-          console.log('mounted');
           // @ts-ignore
           if (config.mounted) {
             // @ts-ignore

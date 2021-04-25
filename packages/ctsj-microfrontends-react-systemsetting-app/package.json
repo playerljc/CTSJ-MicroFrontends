@@ -15,6 +15,7 @@
     "buildpackage": "ctbuild buildpackagets",
     "buildumd": "ctbuild buildumd --packagename $setting --define alias=@,evnVars=true,cssModules=true,static=assets",
     "generatorchangelog": "bd changelog/CHANGELOG.html",
+    "postbuildumd": "node ../../scripts/copyassets.js ./umd/$setting.bundle.js ../ctsj-microfrontends-masterapp/assets/$setting.bundle.js",
     "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
