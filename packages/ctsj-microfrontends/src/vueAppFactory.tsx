@@ -98,6 +98,11 @@ class VueApp {
           }),
         mounted() {
           console.log('mounted');
+          // @ts-ignore
+          if (config.mounted) {
+            // @ts-ignore
+            config.mounted();
+          }
           resolve();
         },
       });

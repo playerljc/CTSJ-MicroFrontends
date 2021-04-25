@@ -9,22 +9,22 @@
           theme="dark"
           :inline-collapsed="collapsed"
         >
-          <a-menu-item key="1" v-on:click="push('/vue_system/vue_menu')">
+          <a-menu-item key="1" @click="push('/vue_system/vue_menu')">
             <span>菜单管理</span>
           </a-menu-item>
-          <a-menu-item key="2" v-on:click="push('/vue_system/vue_role')">
+          <a-menu-item key="2" @click="push('/vue_system/vue_role')">
             <span>角色管理</span>
           </a-menu-item>
-          <a-menu-item key="3" v-on:click="push('/vue_system/vue_department')">
+          <a-menu-item key="3" @click="push('/vue_system/vue_department')">
             <span>部门管理</span>
           </a-menu-item>
           <a-sub-menu key="4">
             <span slot="title">
               <span>统计</span>
             </span>
-            <a-menu-item key="11" v-on:click="push('/vue_system/vue_statistics/total')">汇总统计</a-menu-item>
-            <a-menu-item key="22" v-on:click="push('/vue_system/vue_statistics/person')">人员统计</a-menu-item>
-            <a-menu-item key="33" v-on:click="push('/vue_system/vue_statistics/department')">部门统计</a-menu-item>
+            <a-menu-item key="11" @click="push('/vue_system/vue_statistics/total')">汇总统计</a-menu-item>
+            <a-menu-item key="22" @click="push('/vue_system/vue_statistics/person')">人员统计</a-menu-item>
+            <a-menu-item key="33" @click="push('/vue_system/vue_statistics/department')">部门统计</a-menu-item>
           </a-sub-menu>
         </a-menu>
       </div>
@@ -42,10 +42,12 @@ export default {
     };
   },
   methods: {
-    toggleCollapsed() {
+    toggleCollapsed: function() {
       this.collapsed = !this.collapsed;
     },
-    push(path) {
+    push: function(path) {
+      console.log('push',path);
+      console.log('routerProps',this,this.routerProps,this.routerProps.history);
       this.routerProps.history.push(path);
     }
   },
