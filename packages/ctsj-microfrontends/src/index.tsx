@@ -8,13 +8,12 @@ import { browserConfig } from '@ctsj/router';
 // @ts-ignore
 import { createComponent } from './component';
 
-import * as Actions from './actions';
-import ReactApp from './reactAppFactory';
-import VueApp from './vueAppFactory';
+import * as Actions from './emit/actions';
+import * as Emitter from './emit/emitter';
+import ReactApp from './plugins/reactApp';
+import VueApp from './plugins/vueApp';
 import * as Types from './types';
-import * as Emitter from './emitter';
-
-// import type { IRegisterConfig, IRouteConfig } from './types';
+import Flow from './flow';
 
 // 路由的配置
 const router: Types.IRouteConfig[] = [];
@@ -71,9 +70,12 @@ function start(el: HTMLElement): Promise<null> {
   return new Promise((resolve) => {
     // @ts-ignore
     ReactDOM.render(browserConfig(router), el, () => {
+      // 订阅客户端数据流更改事件
+      Flow.subscribeFlowChange();
+
       resolve();
     });
   });
 }
 
-export default { register, start, Actions, ReactApp, VueApp, Types, Emitter };
+export default { register, start, Actions, ReactApp, VueApp, Types, Emitter, Flow };

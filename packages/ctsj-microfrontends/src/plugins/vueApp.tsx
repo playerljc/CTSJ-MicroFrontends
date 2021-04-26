@@ -1,7 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import Vue from 'vue';
 
-import type { IRegisterConfig, IProps } from './types';
+import type { IRegisterConfig, IProps } from '../types';
 
 /**
  * VueApp - Vue组件

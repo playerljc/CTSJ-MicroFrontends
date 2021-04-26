@@ -1,16 +1,17 @@
 /**
- * ReactApp
- * @class ReactApp
- * @classdesc ReactApp
+ * VueApp - Vue组件
+ * @class VueApp
+ * @classdesc VueApp
  */
-declare class ReactApp {
-    private ref;
-    private ins;
+declare class VueApp {
     private readonly Component;
     private readonly el;
     private readonly props;
     private readonly config;
     private refresh;
+    private ins;
+    private mountEl;
+    private mountWrapEl;
     /**
      * constructor
      * @param component
@@ -27,15 +28,15 @@ declare class ReactApp {
         refresh: any;
     });
     /**
-     * ComponentHOC - 对组件进行包装
-     * @return React.Component
+     * createMountEl - 创建挂载的el
      */
-    private ComponentHOC;
+    createMountEl(): void;
     /**
      * mount - 挂载
+     * @param config - vue的配置对象
      * @return Promise
      */
-    mount(): Promise<null>;
+    mount(config?: {}): Promise<null>;
     /**
      * update - 更新
      * @return Promise
@@ -51,4 +52,4 @@ declare class ReactApp {
      */
     getIns(): any;
 }
-export default ReactApp;
+export default VueApp;

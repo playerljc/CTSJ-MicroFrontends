@@ -1,2 +1,0 @@
-var ROUTER_CHANGE=Symbol("ROUTER_CHANGE"),DATAFLOW_CHANGE=Symbol("DATAFLOW_CHANGE");export{ROUTER_CHANGE,DATAFLOW_CHANGE};
-//# sourceMappingURL=actions.js.map

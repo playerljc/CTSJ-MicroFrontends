@@ -1,8 +1,8 @@
-import * as Actions from './actions';
-import ReactApp from './reactAppFactory';
-import VueApp from './vueAppFactory';
+import * as Actions from './emit/actions';
+import * as Emitter from './emit/emitter';
+import ReactApp from './plugins/reactApp';
+import VueApp from './plugins/vueApp';
 import * as Types from './types';
-import * as Emitter from './emitter';
 /**
  * register - 路由的配置
  * @param config - 路由的配置
@@ -23,5 +23,12 @@ declare const _default: {
     VueApp: typeof VueApp;
     Types: typeof Types;
     Emitter: typeof Emitter;
+    Flow: {
+        getStore(): any;
+        setStore(defaultStore: any): void;
+        subscribeFlowChange(): void;
+        unSubscribeFlowChange(): void;
+        triggerFlowChange(changeData: any): void;
+    };
 };
 export default _default;

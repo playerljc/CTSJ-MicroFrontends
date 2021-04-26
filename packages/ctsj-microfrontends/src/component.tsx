@@ -1,67 +1,11 @@
 import React from 'react';
-import type { IRegisterConfig, IProps, ILocation } from './types';
 import Skeleton from 'react-loading-skeleton';
 
+import type { IRegisterConfig, IProps, ILocation } from './types';
 import Context from './context';
-import { routerChangeEmitter } from './emitter';
-import { ROUTER_CHANGE } from './actions';
-
-/**
- * loadScript - 加载script脚本
- * @param script
- * @return Promise
- */
-function loadScript(script: string): Promise<null> {
-  return new Promise<null>((resolve) => {
-    const el = document.createElement('script');
-    el.addEventListener('load', () => {
-      resolve();
-    });
-    el.src = script;
-    document.getElementsByTagName('head')[0].appendChild(el);
-  });
-}
-
-/**
- * loadLink - 加载css文件
- * @param link
- * @return Promise
- */
-function loadLink(link: string): Promise<null> {
-  return new Promise<null>((resolve) => {
-    const el = document.createElement('link');
-    el.setAttribute('rel', 'stylesheet');
-    el.addEventListener('load', () => {
-      resolve();
-    });
-    el.href = link;
-    document.getElementsByTagName('head')[0].appendChild(el);
-  });
-}
-
-// @ts-ignore
-/**
- * loadRemoteResource - 加载远程所有的脚本和样式资源
- * @param scripts
- * @param links
- * @return Promise
- */
-function loadRemoteResource({
-  scripts,
-  links,
-}: {
-  scripts: string[];
-  links: string[];
-}): Promise<null> {
-  // @ts-ignore
-  return Promise.all(
-    [].concat(
-      // @ts-ignore
-      (scripts || []).map((script: string) => loadScript(script)),
-      (links || []).map((link: string) => loadLink(link)),
-    ),
-  );
-}
+import Util from './util';
+import { routerChangeEmitter } from './emit/emitter';
+import { ROUTER_CHANGE } from './emit/actions';
 
 /**
  * createComponent - 创建路由组件
@@ -117,7 +61,7 @@ export function createComponent(
       if (!window[name]) {
         const { scripts, links } = config;
 
-        loadRemoteResource({
+        Util.loadRemoteResource({
           scripts,
           // @ts-ignore
           links,
@@ -159,8 +103,8 @@ export function createComponent(
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     componentDidUpdate(prevProps: IProps, prevState: Readonly<any>, snapshot?: any) {
-      console.log('prevState.isReady', prevState.isReady);
-      console.log('this.state.isReady', this.state.isReady);
+      // console.log('prevState.isReady', prevState.isReady);
+      // console.log('this.state.isReady', this.state.isReady);
 
       const { lock } = this;
 

@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import type { IRegisterConfig, IProps, IComponentHOCProps } from './types';
+import type { IRegisterConfig, IProps, IComponentHOCProps } from '../types';
 
 /**
  * ReactApp - React组件

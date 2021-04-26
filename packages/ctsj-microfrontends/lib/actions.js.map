@@ -1,1 +1,0 @@
-{"version":3,"file":"actions.js","sources":["actions.js"],"sourcesContent":["export var ROUTER_CHANGE = Symbol('ROUTER_CHANGE');\r\nexport var DATAFLOW_CHANGE = Symbol('DATAFLOW_CHANGE');\r\n"],"names":["ROUTER_CHANGE","Symbol","DATAFLOW_CHANGE"],"mappings":"AAAO,IAAIA,cAAgBC,OAAO,iBACvBC,gBAAkBD,OAAO,0BADzBD,cACAE"}
