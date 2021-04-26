@@ -8,6 +8,7 @@ declare class ReactApp {
     private ins;
     private readonly Component;
     private readonly el;
+    private mountEl;
     private readonly props;
     private readonly config;
     private refresh;
@@ -26,6 +27,10 @@ declare class ReactApp {
         config: any;
         refresh: any;
     });
+    /**
+     * createMountEl - 创建挂载的el
+     */
+    createMountEl(): void;
     /**
      * ComponentHOC - 对组件进行包装
      * @return React.Component

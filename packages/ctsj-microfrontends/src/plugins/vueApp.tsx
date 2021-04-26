@@ -60,7 +60,7 @@ class VueApp {
   /**
    * createMountEl - 创建挂载的el
    */
-  createMountEl() {
+  createMountEl(): void {
     this.mountWrapEl = document.createElement('div');
     this.mountWrapEl.className = 'ctsj_microfrontends_vueapp_mount_warapel';
     this.mountWrapEl.style.width = '100%';

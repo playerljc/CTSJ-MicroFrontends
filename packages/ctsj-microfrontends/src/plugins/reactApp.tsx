@@ -20,6 +20,8 @@ class ReactApp {
   // 挂载的html元素
   private readonly el: HTMLElement;
 
+  private mountEl: HTMLDivElement | undefined;
+
   // 路由组件的props
   private readonly props: IProps;
 
@@ -52,6 +54,22 @@ class ReactApp {
 
     // 刷新
     this.refresh = refresh;
+
+    this.createMountEl();
+  }
+
+  /**
+   * createMountEl - 创建挂载的el
+   */
+  createMountEl(): void {
+    this.mountEl = document.createElement('div');
+    this.mountEl.className = 'ctsj_microfrontends_reactapp_mountel';
+    this.mountEl.style.width = '100%';
+    this.mountEl.style.height = '100%';
+    this.mountEl.style.padding = '0';
+    this.mountEl.style.margin = '0';
+
+    this.el.appendChild(this.mountEl);
   }
 
   /**
@@ -94,7 +112,7 @@ class ReactApp {
       const App = this.ComponentHOC();
 
       // @ts-ignore
-      ReactDOM.render(<App ref={this.ref} />, this.el, () => {
+      ReactDOM.render(<App ref={this.ref} />, this.mountEl, () => {
         resolve();
       });
     });
@@ -119,7 +137,11 @@ class ReactApp {
    * @return boolean
    */
   unmount(): boolean {
-    return ReactDOM.unmountComponentAtNode(this.el);
+    const result = ReactDOM.unmountComponentAtNode(this.mountEl);
+
+    this.mountEl?.parentElement?.removeChild(this.mountEl);
+
+    return result;
   }
 
   /**
