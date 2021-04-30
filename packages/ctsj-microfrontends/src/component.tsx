@@ -47,6 +47,18 @@ export function createComponent(
       this.refresh = this.refresh.bind(this);
     }
 
+    componentWillReceiveProps() {
+      const { pathname } = window.location;
+
+      console.log('微服务路由组件发生变化', pathname, this?.preChangeLocation?.pathname);
+
+      // 如果是自身刷新，判断之前的pathname和当前到的pathname是否一样，不一样触发一次路由改变
+      if (pathname === this?.preChangeLocation?.pathname) {
+        this.preChangeLocation = window.location;
+        routerChangeEmitter.trigger(ROUTER_CHANGE, window.location);
+      }
+    }
+
     componentDidMount() {
       // 1.接收到props中的history对象
       const { history } = this.props;

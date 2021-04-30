@@ -26,57 +26,6 @@ const config = [
     scripts: [`${context}/$app.bundle.js`],
     links: [`${context}/$app.min.css`],
     routes: [
-      /* ------------------------------Vue------------------------------*/
-      {
-        // 用户管理(Vue)
-        path: '/vue_user',
-        name: '$userVue',
-        scripts: [`${context}/$userVue.umd.min.js`],
-      },
-      {
-        // 系统设置(Vue)
-        path: '/vue_setting',
-        name: '$settingVue',
-        scripts: [`${context}/$settingVue.umd.min.js`],
-      },
-      {
-        // 系统管理(Vue)
-        path: '/vue_system',
-        name: '$systemVue',
-        scripts: [`${context}/$systemVue.umd.min.js`],
-        links: [`${context}/$systemVue.css`],
-        routes: [
-          {
-            path: '/',
-            redirect: '/vue_system/vue_menu',
-          },
-          {
-            // 菜单管理
-            path: '/vue_system/vue_menu',
-            name: '$menuVue',
-            scripts: [`${context}/$menuVue.umd.min.js`],
-          },
-          {
-            // 角色管理
-            path: '/vue_system/vue_role',
-            name: '$roleVue',
-            scripts: [`${context}/$roleVue.umd.min.js`],
-          },
-          {
-            // 部门管理
-            path: '/vue_system/vue_department',
-            name: '$departmentVue',
-            scripts: [`${context}/$departmentVue.umd.min.js`],
-          },
-          {
-            // 统计管理
-            path: '/vue_system/vue_statistics/*',
-            name: '$statisticsVue',
-            scripts: [`${context}/$statisticsVue.umd.min.js`],
-          },
-        ],
-      },
-
       /* -----------------------------React-----------------------------*/
       {
         path: '/',
@@ -136,6 +85,125 @@ const config = [
             links: [`${context}/$statistics.min.css`],
           },
         ],
+      },
+      {
+        path: '/react_mixing',
+        name: '$reactMixing',
+        scripts: [`${context}/$reactMixing.bundle.js`],
+        routes: [
+          // {
+          //   path: '/',
+          //   redirect: '/react_mixing/react_sub_mixing',
+          // },
+          {
+            path: '/react_mixing/react_sub_mixing',
+            name: '$reactSubMixing',
+            scripts: [`${context}/$reactSubMixing.bundle.js`],
+          },
+          {
+            path: '/react_mixing/vue_sub_mixing',
+            name: '$vueSubMixing',
+            scripts: [`${context}/$vueSubMixing.umd.min.js`],
+          },
+        ],
+      },
+
+      /* ------------------------------Vue------------------------------*/
+      {
+        // 用户管理(Vue)
+        path: '/vue_user',
+        name: '$userVue',
+        scripts: [`${context}/$userVue.umd.min.js`],
+      },
+      {
+        // 系统设置(Vue)
+        path: '/vue_setting',
+        name: '$settingVue',
+        scripts: [`${context}/$settingVue.umd.min.js`],
+      },
+      {
+        // 系统管理(Vue)
+        path: '/vue_system',
+        name: '$systemVue',
+        scripts: [`${context}/$systemVue.umd.min.js`],
+        links: [`${context}/$systemVue.css`],
+        routes: [
+          {
+            path: '/',
+            redirect: '/vue_system/vue_menu',
+          },
+          {
+            // 菜单管理
+            path: '/vue_system/vue_menu',
+            name: '$menuVue',
+            scripts: [`${context}/$menuVue.umd.min.js`],
+          },
+          {
+            // 角色管理
+            path: '/vue_system/vue_role',
+            name: '$roleVue',
+            scripts: [`${context}/$roleVue.umd.min.js`],
+          },
+          {
+            // 部门管理
+            path: '/vue_system/vue_department',
+            name: '$departmentVue',
+            scripts: [`${context}/$departmentVue.umd.min.js`],
+          },
+          {
+            // 统计管理
+            path: '/vue_system/vue_statistics/*',
+            name: '$statisticsVue',
+            scripts: [`${context}/$statisticsVue.umd.min.js`],
+          },
+        ],
+      },
+      {
+        path: '/vue_mixing',
+        name: '$vueMixing',
+        scripts: [`${context}/$vueMixing.umd.min.js`],
+        routes: [
+          // {
+          //   path: '/',
+          //   redirect: '/vue_mixing/react_sub_mixing',
+          // },
+          {
+            path: '/vue_mixing/react_sub_mixing',
+            name: '$reactSubMixing',
+            scripts: [`${context}/$reactSubMixing.bundle.js`],
+          },
+          {
+            path: '/vue_mixing/vue_sub_mixing',
+            name: '$vueSubMixing',
+            scripts: [`${context}/$vueSubMixing.umd.min.js`],
+          },
+        ],
+      },
+
+      /* ----------------------------DataFlow---------------------------*/
+      {
+        // react-redux数据流
+        path: '/react-redux',
+        name: '$reactRedux',
+        scripts: [`${context}/$reactRedux.bundle.js`],
+      },
+      {
+        // ant-pro(dva)数据流
+        path: '/ant-pro',
+        name: '$antPro',
+        scripts: [`${context}/$antPro.bundle.js`],
+      },
+      {
+        // react-pro(@ctsj/state)数据流
+        path: '/react-pro',
+        name: '$reactPro',
+        scripts: [`${context}/$reactPro.bundle.js`],
+      },
+      {
+        // vuex数据流
+        path: '/vuex',
+        name: '$vuex',
+        scripts: [`${context}/$vuex.umd.min.js`],
       },
     ],
   },

@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+const { spawn } = require('child_process');
+const args = require('./commandArgs');
+
+// 运行脚本的路径
+const runtimePath = process.cwd();
+
 /**
  * isWin32
  * @return {boolean}
@@ -7,17 +13,6 @@
 function isWin32() {
   return process.platform === 'win32';
 }
-
-/**
- * src - 原始目录
- * targetsrc 目标目录
- */
-const path = require('path');
-const { spawn } = require('child_process');
-const args = require('./commandArgs');
-
-// 运行脚本的路径
-const runtimePath = process.cwd();
 
 /**
  * cpTask

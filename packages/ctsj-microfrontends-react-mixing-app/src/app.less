@@ -1,0 +1,13 @@
+.Wrap {
+  display: flex;
+  flex-direction: column;
+
+  > .Fixed {
+    flex-shrink: 0;
+  }
+
+  > .Auto {
+    flex-grow: 1;
+    min-height: 0;
+  }
+}

@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import type { IRegisterConfig, IProps, IComponentHOCProps } from '../types';
+import type { IComponentHOCProps, IProps, IRegisterConfig } from '../types';
 
 /**
  * ReactApp - React组件
@@ -69,6 +69,7 @@ class ReactApp {
     this.mountEl.style.padding = '0';
     this.mountEl.style.margin = '0';
 
+    this.el.innerHTML = '';
     this.el.appendChild(this.mountEl);
   }
 
@@ -137,11 +138,9 @@ class ReactApp {
    * @return boolean
    */
   unmount(): boolean {
-    const result = ReactDOM.unmountComponentAtNode(this.mountEl);
-
     this.mountEl?.parentElement?.removeChild(this.mountEl);
 
-    return result;
+    return ReactDOM.unmountComponentAtNode(this.mountEl);
   }
 
   /**

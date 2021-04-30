@@ -76,6 +76,7 @@ class VueApp {
     this.mountEl.style.margin = '0';
 
     this.mountWrapEl.appendChild(this.mountEl);
+    this.el.innerHTML = '';
     this.el.appendChild(this.mountWrapEl);
   }
 

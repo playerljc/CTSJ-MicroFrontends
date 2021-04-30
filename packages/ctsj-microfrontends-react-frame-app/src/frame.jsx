@@ -66,6 +66,50 @@ class Frame extends React.Component {
               >
                 系统设置(Vue)
               </li>
+
+              <li
+                onClick={() => {
+                  this.props.history.push('/react_mixing');
+                }}
+              >
+                mixing(React)
+              </li>
+              <li
+                onClick={() => {
+                  this.props.history.push('/vue_mixing');
+                }}
+              >
+                mixing(Vue)
+              </li>
+
+              <li
+                onClick={() => {
+                  this.props.history.push('/react-redux');
+                }}
+              >
+                react-redux
+              </li>
+              <li
+                onClick={() => {
+                  this.props.history.push('/ant-pro');
+                }}
+              >
+                ant-pro
+              </li>
+              <li
+                onClick={() => {
+                  this.props.history.push('/react-pro');
+                }}
+              >
+                react-pro
+              </li>
+              <li
+                onClick={() => {
+                  this.props.history.push('/vuex');
+                }}
+              >
+                vuex
+              </li>
             </ul>
           </div>
           <div className={styles.Right}>Right</div>
