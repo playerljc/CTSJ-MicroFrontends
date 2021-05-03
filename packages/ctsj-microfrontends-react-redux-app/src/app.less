@@ -1,0 +1,48 @@
+.Wrap {
+  display: flex;
+  flex-direction: column;
+
+  > .Fixed {
+    padding: 20px;
+    display: flex;
+    flex-shrink: 0;
+
+    > .Fixed {
+      flex-shrink: 0;
+      margin-right: 15px;
+    }
+
+    > .Auto {
+      flex-grow: 1;
+      min-width: 0;
+    }
+  }
+
+  > .Auto {
+    flex-grow: 1;
+    min-height: 0;
+
+    > .List {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      > .Item {
+        display: flex;
+        border-bottom: 1px solid rgba(0,0,0,.1);
+
+        > .Fixed {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+          margin-left: 15px;
+        }
+
+        > .Auto {
+          flex-grow: 1;
+          min-width: 0;
+        }
+      }
+    }
+  }
+}

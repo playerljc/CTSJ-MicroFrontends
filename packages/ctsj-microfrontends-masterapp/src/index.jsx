@@ -5,7 +5,7 @@ import CtsjMicroFrontends from 'CtsjMicroFrontends';
 
 import './index.less';
 
-const { register, start } = CtsjMicroFrontends;
+const { register, start, Flow } = CtsjMicroFrontends;
 const context = 'http://localhost:8080/assets';
 
 /**
@@ -186,6 +186,7 @@ const config = [
         path: '/react-redux',
         name: '$reactRedux',
         scripts: [`${context}/$reactRedux.bundle.js`],
+        links: [`${context}/$reactRedux.min.css`],
       },
       {
         // ant-pro(dva)数据流
@@ -216,6 +217,10 @@ const container = document.getElementById('container');
  * 注册
  */
 register(config, container).then(() => {
+  Flow.setStore([]);
+  console.log(Flow.getStore());
+  debugger;
+
   /**
    * 启动
    */
